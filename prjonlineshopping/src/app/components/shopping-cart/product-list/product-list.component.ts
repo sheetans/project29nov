@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
   compareBtn: string = 'Add to Compare';
   products: Products[] = new Array<Products>();
   productList: Products[] = [];
+  public searchText: any;
   constructor(private prodservice: productservice) { }
 
   ngOnInit(): void {

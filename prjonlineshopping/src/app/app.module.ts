@@ -23,7 +23,8 @@ import { ViewdetailComponent } from './viewdetail/viewdetail.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RetailercrudComponent } from './retailercrud/retailercrud.component';
-import { MyorderComponent } from './myorder/myorder.component';
+import { Productsearchpipe } from './pipe/search.pipe';
+
 
 
 @NgModule({
@@ -46,8 +47,8 @@ import { MyorderComponent } from './myorder/myorder.component';
     UserprofileComponent,
     WishlistComponent,
     RetailercrudComponent,
-    MyorderComponent
-  ],
+    Productsearchpipe
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

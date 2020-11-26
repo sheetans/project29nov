@@ -16,17 +16,26 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     debugger;
+    this.getwishproducts();
+
+  }
+  getwishproducts(){
     let userId = Number(sessionStorage.getItem('userId'));
     this.prodservice.getWishlistProduct(userId).subscribe((data: any) => {
       debugger;
       this.wishlistmodel = data;
     });
+
   }
+  
+
   handleRemoveFromWishlist(id){
    this.prodservice. RemoveFromWishList(this.deletewishid = id).subscribe((response: any) => {
      if (response == 'Success'){
        alert('Product successfully removed from Wishlist');
+       this.getwishproducts();
      }
     });
    }
+   
 }

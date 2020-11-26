@@ -10,6 +10,6 @@ namespace OnlineShopping.Models
         public int OrderID { get; set; }
         public int UserID { get; set; }
         public double OrderTotal { get; set; }
-        public DateTime OrderDate { get; set; }
+        public List<CartModel> CartModel { get; set; }
     }
 }
