@@ -12,18 +12,22 @@ import { productservice } from './services/productservice';
 import { categoryservice } from './services/category.service';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { NavComponent } from './components/shared/nav/nav.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { FiltersComponent } from './components/shopping-cart/filters/filters.component';
-import { ProductListComponent } from './components/shopping-cart/product-list/product-list.component';
-import { CartComponent } from './components/shopping-cart/cart/cart.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { CompareproductsComponent } from './compareproducts/compareproducts.component';
 import { ViewdetailComponent } from './viewdetail/viewdetail.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RetailercrudComponent } from './retailercrud/retailercrud.component';
-import { Productsearchpipe } from './pipe/search.pipe';
+import { AdminregistrationComponent } from './adminregistration/adminregistration.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { RetailerviewComponent } from './retailerview/retailerview.component';
+import { RetailerdashboardComponent } from './retailerdashboard/retailerdashboard.component';
+import { ProductfilterPipe } from 'src/app/filter/productfilter.pipe';
+import { CartComponent } from './components/shared/cart/cart.component';
+import { ProductListComponent } from './components/shared/product-list/product-list.component';
+
 
 
 
@@ -36,9 +40,7 @@ import { Productsearchpipe } from './pipe/search.pipe';
     ProductcrudComponent,
     HeaderComponent,
     NavComponent,
-    ShoppingCartComponent,
     FooterComponent,
-    FiltersComponent,
     ProductListComponent,
     CartComponent,
     ForgotpasswordComponent,
@@ -47,7 +49,12 @@ import { Productsearchpipe } from './pipe/search.pipe';
     UserprofileComponent,
     WishlistComponent,
     RetailercrudComponent,
-    Productsearchpipe
+    AdminregistrationComponent,
+    AdminloginComponent,
+    AdmindashboardComponent,
+    RetailerviewComponent,
+    RetailerdashboardComponent,
+    ProductfilterPipe
     ],
   imports: [
     BrowserModule,

@@ -12,6 +12,8 @@ namespace OnlineShopping.Models
         [DataMember]
         public int Id { get; set; }
         [DataMember]
+        public int UserID { get; set; }
+        [DataMember]
         public string FirstName { get; set; }
         [DataMember]
         public string LastName { get; set; }

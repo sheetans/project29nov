@@ -4,6 +4,7 @@ import { MustMatch } from '../mustmatch';
 import { RegistrationModel } from '../models/registration-model';
 import { RegistrationService } from '../services/registration.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Adminservice } from '../services/admin.service';
 
 @Component({
   selector: 'app-retailercrud',
@@ -11,12 +12,17 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./retailercrud.component.css']
 })
 export class RetailercrudComponent implements OnInit {
-  registrationModel: RegistrationModel = new RegistrationModel();
+  registrationModel: RegistrationModel[];
   registerForm: FormGroup;
+  registration: RegistrationModel = new RegistrationModel();
+  deleteUserId: number;
+  addUpdate: string = 'Add';
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService, private modalService: NgbModal) { }
+  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService,
+              private modalService: NgbModal, private adminservice: Adminservice) { }
 
   ngOnInit(): void {
+    this.GetRetailer();
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -32,29 +38,49 @@ export class RetailercrudComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit(model) {
+    debugger;
     this.submitted = true;
     if (this.registerForm.invalid) {
       return;
     }
-    model.Role = 'User';
+    model.Role = 'Retailer';
     this.registrationService.Register(model).subscribe((response: any) => {
       this.submitted = false;
-      alert("Retailer Registered Succesfully");
-      this.registrationModel = new RegistrationModel();
+      alert('Retailer Registered Succesfully');
+      this.registration = new RegistrationModel();
       if (response.IsValid) {
 
       }
     });
 
   }
-  // GetProducts() {
-  //   this.prodservice.getProduct().subscribe((data: any) => {
-  //     this.products = data;
-  //   });
-  // openDeletePopup(contentdelete, id) {
-  //   this.deleteProductId = id;
-  //   this.modalService.open(contentdelete);
-  // }
 
+  GetRetailer() {
+    this.adminservice.GetRetailer().subscribe((data: any) => {
+      this.registrationModel = data;
+    });
+  }
+  GetRetailerById(id) {
+    debugger;
+    this.adminservice.GetRetailerById(id).subscribe((response: any) => {
+      this.addUpdate = 'Update';
+      this.registration = response;
+    });
+  }
+  DeleteConfirmation(id) {
+    this.deleteUserId = id;
+  }
+
+  DeleteProduct() {
+    debugger;
+    this.adminservice.DeleteRetailer(this.deleteUserId).subscribe((response: any) => {
+      this.GetRetailer();
+      alert('Retailer Removed Successfully');
+    });
+  }
+  openDeletePopup(contentdelete, id) {
+    this.deleteUserId = id;
+    this.modalService.open(contentdelete);
+  }
 
 }

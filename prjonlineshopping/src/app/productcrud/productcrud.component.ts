@@ -40,6 +40,7 @@ export class ProductcrudComponent implements OnInit {
   }
 
   SaveProduct() {
+
     this.prodservice.insertProduct(this.prod).subscribe((response: any) => {
       if (response == 'Success') {
         this.prod = new Products();
@@ -87,7 +88,8 @@ export class ProductcrudComponent implements OnInit {
   }
 
   SaveImages() {
-    this.prodservice.insertProductImage(this.fileToUpload, this.prod.ProductID, true).subscribe((response: any) => {
+    debugger;
+    this.prodservice.insertProductImage(this.productImages, this.prod.ProductID, true).subscribe((response: any) => {
       if (response == 'Success') {
         alert('ProductImage Saved Succesfully');
         var reader = new FileReader();

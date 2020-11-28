@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using Microsoft.AspNetCore.Http;
 using OnlineShopping.Models;
 
 namespace OnlineShopping.Controllers
@@ -22,25 +23,25 @@ namespace OnlineShopping.Controllers
 
         [HttpPost]
         //[Route("api/UploadImage")]
-        public IHttpActionResult UploadImage()
+        public IHttpActionResult UploadImage(List<IFormFile> files)
         {
-            var file = System.Web.HttpContext.Current.Request.Files.Count > 0 ?
-        System.Web.HttpContext.Current.Request.Files[0] : null;
+        //    var file = System.Web.HttpContext.Current.Request.Files.Count > 0 ?
+        //System.Web.HttpContext.Current.Request.Files[0] : null;
 
-            string imageName = "";
-            var httpRequest = HttpContext.Current.Request;
-            var postedFile = httpRequest.Files["Image"];
-            imageName = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
-            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(postedFile.FileName);
-            var filePath = HttpContext.Current.Server.MapPath("~/Image/" + imageName);
-            postedFile.SaveAs(filePath);
+        //    string imageName = "";
+        //    var httpRequest = HttpContext.Current.Request;
+        //    var postedFile = httpRequest.Files["Image"];
+        //    imageName = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
+        //    imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(postedFile.FileName);
+        //    var filePath = HttpContext.Current.Server.MapPath("~/Image/" + imageName);
+        //    postedFile.SaveAs(filePath);
 
-            Image image = new Image();
-            image.ProductImage = "/Image/" + imageName;
-            image.ProductID = Convert.ToInt32(HttpContext.Current.Request.Form[1]);
-            image.IsDefault = Convert.ToBoolean(HttpContext.Current.Request.Form[2]);
-            db.Images.Add(image);
-            db.SaveChanges();
+        //    Image image = new Image();
+        //    image.ProductImage = "/Image/" + imageName;
+        //    image.ProductID = Convert.ToInt32(HttpContext.Current.Request.Form[1]);
+        //    image.IsDefault = Convert.ToBoolean(HttpContext.Current.Request.Form[2]);
+        //    db.Images.Add(image);
+        //    db.SaveChanges();
 
             return Ok("Success");
 

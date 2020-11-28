@@ -536,6 +536,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CompareProductsController.cs" />
@@ -545,6 +546,7 @@
     <Compile Include="Controllers\OTPController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\registersController.cs" />
+    <Compile Include="Controllers\UserProductController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Data\OnlineShoppingContext.cs" />
@@ -563,6 +565,7 @@
       <DependentUpon>OnlineShoppingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\Image.cs">
       <DependentUpon>OnlineShoppingModel.tt</DependentUpon>
     </Compile>

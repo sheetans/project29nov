@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Products } from '../models/Products.model';
 
@@ -21,14 +21,31 @@ export class productservice {
         return this.http.post(this.uri, prod);
     }
 
-    insertProductImage(fileToUpload, productId, isDefault) {
+    insertProductImage(fileToUploads, productId, isDefault) {
         debugger;
-        const formData = new FormData();
-        formData.append('Name', fileToUpload.name);
-        formData.append('Image', fileToUpload);
-        formData.append('ProductId', productId);
-        formData.append('IsDefault', isDefault);
-        return this.http.post('https://localhost:44324/api/Image/UploadImage', formData);
+        const formData: FormData = new FormData();
+        // fileToUploads.forEach(fileToUpload => {
+        //     const formData: FormData = new FormData();
+        //     formData.append('Name', fileToUpload.name);
+        //     formData.append('Image', fileToUpload);
+        //     formData.append('ProductId', productId);
+        //     formData.append('IsDefault', isDefault);
+        //     formDataObj.push(formData);
+        // });
+        fileToUploads.forEach((file) => { formData.append('files[]', file); });
+        // const httpOptions = {
+        //     headers: new HttpHeaders({ 'Content-Disposition': 'multipart/form-data' }),
+        // };
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json; charset=UTF-8'
+        });
+        let options = {
+            headers: headers
+        }
+
+
+
+        return this.http.post('https://localhost:44324/api/Image/UploadImage', formData, options);
     }
 
     deleteProduct(id) {
@@ -46,11 +63,11 @@ export class productservice {
     updateProduct(product: Products) {
         return this.http.put(this.uri + product.ProductID, product);
     }
-   // webapi called for adding the products to Cart
+    // webapi called for adding the products to Cart
     AddToCart(model) {
         return this.http.post('https://localhost:44324/api/Carts/AddToCart', model);
     }
-     // webapi called for adding the products to Wishlist
+    // webapi called for adding the products to Wishlist
     AddToWishlist(model) {
         return this.http.post('https://localhost:44324/api/Wishlist/', model);
     }
@@ -63,7 +80,7 @@ export class productservice {
     getCompareProduct() {
         return this.http.get('https://localhost:44324/api/CompareProducts/GetProducts');
     }
- 
+
     getCartProduct(userId) {
         return this.http.get('https://localhost:44324/api/Carts/GetCart?userId=' + userId);
     }
@@ -72,16 +89,14 @@ export class productservice {
         return this.http.get('https://localhost:44324/api/Wishlist/WishlistProduct?userId=' + userId);
     }
 
-    RemoveFromWishList(id)
-    {
-        return this.http.delete("https://localhost:44324/api/Wishlist/" +id);
+    RemoveFromWishList(id) {
+        return this.http.delete("https://localhost:44324/api/Wishlist/" + id);
     }
 
     UpdateCart(model) {
         return this.http.put('https://localhost:44324/api/Carts/UpdateCart', model);
     }
-    RemovefromCart(id)
-    {
-        return this.http.delete("https://localhost:44324/api/Carts/" +id);
+    RemovefromCart(id) {
+        return this.http.delete("https://localhost:44324/api/Carts/" + id);
     }
 }

@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
       gender: ['', Validators.required],
       mobileNo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      role: ['', [Validators.required, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     },
@@ -34,7 +35,8 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    model.Role = 'User';
+    // model.Role = 'User';
+    debugger;
     this.registrationService.Register(model).subscribe((response: any) => {
       this.submitted = false;
       alert("User Registered Succesfully");

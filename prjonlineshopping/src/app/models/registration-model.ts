@@ -1,22 +1,24 @@
 export class RegistrationModel {
     constructor() {
         this.Id = null;
+        this.UserID = null;
         this.FirstName = '';
         this.LastName = '';
         this.Gender = '';
-        this.MobileNo = '';
+        this.MobileNumber = '';
         this.Email = '';
         this.Password = '';
         this.ConfirmPassword = '';
-        this.Role = '';
+        this.Role = 'User';
         this.Status = '';
         this.CreatedOn = null;
     }
     Id: number;
+    UserID: number;
     FirstName: string;
     LastName: string;
     Gender: string;
-    MobileNo: string;
+    MobileNumber: string;
     Email: string;
     Password: string;
     ConfirmPassword: string;

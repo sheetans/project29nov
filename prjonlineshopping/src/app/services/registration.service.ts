@@ -9,6 +9,7 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 // Calling WebApi For User Registration
   Register(model) {
+    debugger;
     return this.http.post('https://localhost:44324/api/registers/', model);
   }
 // Calling WebApi For User Login
