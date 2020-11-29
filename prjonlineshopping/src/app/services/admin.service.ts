@@ -10,16 +10,16 @@ export class Adminservice {
 
 // created a service for Fetching every retailer information from Usertable
  GetRetailer() {
-    return this.http.get('https://localhost:44324/api/Admin/');
+    return this.http.get('https://localhost:52623/api/Admin/');
 }
 GetRetailerById(id) {
     debugger;
-    return this.http.get('https://localhost:44324/api/Admin/' + 'GetRetailerById?id=' + id);
+    return this.http.get('https://localhost:52623/api/Admin/' + 'GetRetailerById?id=' + id);
 }
 // created a service for deleting a retailer by ID
 DeleteRetailer(id) {
     debugger;
-    return this.http.delete('https://localhost:44324/api/Admin/' + id);
+    return this.http.delete('https://localhost:52623/api/Admin/' + id);
 }
 
 

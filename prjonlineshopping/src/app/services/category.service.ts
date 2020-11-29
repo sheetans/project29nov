@@ -7,11 +7,11 @@ export class categoryservice {
     constructor(private http: HttpClient) { }
 
     // getcategorylist(){
-    //     return this.http.get('https://localhost:44324/api/Categories').toPromise();
+    //     return this.http.get('https://localhost:52623/api/Categories').toPromise();
     // }
 
     GetCategoryList() {
-        return this.http.get('https://localhost:44324/api/Categories');
+        return this.http.get('https://localhost:52623/api/Categories');
     }
 
 

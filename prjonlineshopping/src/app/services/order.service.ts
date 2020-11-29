@@ -9,7 +9,7 @@ myordermodel: MyOrderModel[];
 constructor(private http: HttpClient) { }
 
 PlaceOrder(model) {
-    return this.http.post('https://localhost:44324/api/MyOrder/PlaceOrder', model);
+    return this.http.post('https://localhost:52623/api/MyOrder/PlaceOrder', model);
 }
 
 

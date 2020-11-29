@@ -10,22 +10,22 @@ export class RegistrationService {
 // Calling WebApi For User Registration
   Register(model) {
     debugger;
-    return this.http.post('https://localhost:44324/api/registers/', model);
+    return this.http.post('https://localhost:52623/api/registers/', model);
   }
 // Calling WebApi For User Login
   Login(model) {
-    return this.http.get('https://localhost:44324/api/registers?email=' + model.email + '&password=' + model.password);
+    return this.http.get('https://localhost:52623/api/registers?email=' + model.email + '&password=' + model.password);
   }
 // Calling WebApi For Forgot Password
   ForgotPassword(email){
-    return this.http.get('https://localhost:44324/api/OTP/VerifyEmail?email=' + email);
+    return this.http.get('https://localhost:52623/api/OTP/VerifyEmail?email=' + email);
   }
 // Calling WebApi For Change Password
   ChangePassword(model){
-    return this.http.post('https://localhost:44324/api/OTP/ChangePassword', model);
+    return this.http.post('https://localhost:52623/api/OTP/ChangePassword', model);
   }
 
   GetRetailer() {
-    return this.http.get('https://localhost:44324/api/registers/');
+    return this.http.get('https://localhost:52623/api/registers/');
 }
 }
